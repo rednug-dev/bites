@@ -41,7 +41,7 @@ export default function HeroSection() {
               href="/booking"
               className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium rounded-lg bg-primary hover:bg-primary/90 focus:ring-4 focus:ring-primary/30"
             >
-              Bestill bord
+              Book Oss
               <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor"
                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd"
