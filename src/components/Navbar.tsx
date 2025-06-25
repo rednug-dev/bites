@@ -1,88 +1,98 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Image from "next/image"
-import Link from "next/link"
-import { Info, Mail, Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Menu, X, Info, Mail } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <nav className="relative w-full bg-black shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 grid grid-cols-3 items-center h-16">
-        {/* 1. Logo til venstre */}
-        <Link href="/" className="flex items-center">
-          <div className="relative w-32 h-12">
+    <nav className="bg-black w-full">
+      <div className="max-w-screen-2xl mx-auto flex items-center justify-between py-4 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+        {/* Logo */}
+        <div className="flex-shrink-0">
+          <Link href="/" className="inline-block">
             <Image
               src="/biteslogo-r.png"
               alt="Bites logo"
-              fill
-              className="object-contain"
+              width={160}
+              height={40}
+              className="h-10 w-auto"
+              priority
             />
-          </div>
-        </Link>
-
-        {/* 2. Navigasjon i midten (desktop only) */}
-        <div className="hidden md:flex justify-center space-x-8">
-          <Link href="/about" className="flex items-center space-x-2 text-white text-sm hover:text-secondary">
-            <Info className="w-4 h-4" /><span>Om oss</span>
-          </Link>
-          <Link href="/kontakt" className="flex items-center space-x-2 text-white text-sm hover:text-secondary">
-            <Mail className="w-4 h-4" /><span>Kontakt</span>
           </Link>
         </div>
 
-        {/* 3. Knapp og hamburger (knapp desktop, hamburger mob) */}
-        <div className="flex justify-end items-center space-x-4">
-          {/* Desktop-knapp */}
-          <div className="hidden md:block">
-            <Button
-              className="bg-white hover:bg-white/90 text-neutral"
-              onClick={() => window.location.href = "/booking"}
-            >
-              Book nå
-            </Button>
-          </div>
-          {/* Hamburger på mobil */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setOpen(true)}
-            aria-label="Åpne meny"
+        {/* Desktop-nav lenker (midtstilt) */}
+        <div className="hidden md:flex flex-1 justify-center space-x-12">
+          <Link
+            href="/about"
+            className="flex items-center text-white hover:text-secondary space-x-1"
           >
-            <Menu className="w-6 h-6 text-white" />
+            <Info className="h-5 w-5" />
+            <span>Om oss</span>
+          </Link>
+          <Link
+            href="/kontakt"
+            className="flex items-center text-white hover:text-secondary space-x-1"
+          >
+            <Mail className="h-5 w-5" />
+            <span>Kontakt</span>
+          </Link>
+        </div>
+
+        {/* Desktop-CTA */}
+        <div className="hidden md:flex flex-shrink-0">
+          <Button asChild>
+            <Link href="/booking">Book nå</Link>
+          </Button>
+        </div>
+
+        {/* Mobil-hamburger */}
+        <div className="md:hidden ml-auto">
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="text-white focus:outline-none"
+            aria-label="Toggle navigation"
+          >
+            {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile dropdown */}
-      {open && (
-        <div className="absolute inset-0 bg-black/90 z-50 flex flex-col p-6 space-y-6">
-          <div className="flex justify-end">
-            <button onClick={() => setOpen(false)} aria-label="Lukk meny">
-              <X className="w-6 h-6 text-white" />
-            </button>
+      {/* Mobil-meny */}
+      {mobileOpen && (
+        <div className="md:hidden bg-black">
+          <div className="px-4 pt-2 pb-4 space-y-2">
+            <Link
+              href="/about"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center text-white hover:text-secondary space-x-1"
+            >
+              <Info className="h-5 w-5" />
+              <span>Om oss</span>
+            </Link>
+            <Link
+              href="/kontakt"
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center text-white hover:text-secondary space-x-1"
+            >
+              <Mail className="h-5 w-5" />
+              <span>Kontakt</span>
+            </Link>
+            <Button
+              asChild
+              className="w-full mt-2"
+              onClick={() => setMobileOpen(false)}
+            >
+              <Link href="/booking">Book nå</Link>
+            </Button>
           </div>
-          <nav className="flex flex-col space-y-4">
-            <Link onClick={() => setOpen(false)} href="/about" className="text-white text-lg">
-              Om oss
-            </Link>
-            <Link onClick={() => setOpen(false)} href="/kontakt" className="text-white text-lg">
-              Kontakt
-            </Link>
-          </nav>
-          <Button
-            className="mt-4 bg-white hover:bg-white/90 text-neutral self-start"
-            onClick={() => {
-              setOpen(false)
-              window.location.href = "/booking"
-            }}
-          >
-            Book nå
-          </Button>
         </div>
       )}
     </nav>
-  )
+  );
 }
