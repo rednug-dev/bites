@@ -29,7 +29,7 @@ export default function Navbar() {
         {/* Desktop-nav lenker (midtstilt) */}
         <div className="hidden md:flex flex-1 justify-center space-x-12">
           <Link
-            href="/about"
+            href="/om-oss"
             className="flex items-center text-white hover:text-secondary space-x-1"
           >
             <Info className="h-5 w-5" />
@@ -68,7 +68,7 @@ export default function Navbar() {
         <div className="md:hidden bg-black">
           <div className="px-4 pt-2 pb-4 space-y-2">
             <Link
-              href="/about"
+              href="/om-oss"
               onClick={() => setMobileOpen(false)}
               className="flex items-center text-white hover:text-secondary space-x-1"
             >
