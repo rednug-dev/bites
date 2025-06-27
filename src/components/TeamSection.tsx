@@ -18,24 +18,24 @@ interface Member {
 
 const team: Member[] = [
   {
-    name: 'Oda Hansen',
+    name: 'Abdulrahman Al Tamimi',
     role: 'Grunnlegger & CEO',
-    image: '/team/teamex.png',
-    bio: 'Oda startet Bites etter en livslang lidenskap for god mat og samfunnsengasjement. Som CEO driver hun selskapet fremover med visjon og hjerte.',
+    image: '/team/abu-temp.png',
+    bio: 'Abu startet Bites etter en livslang lidenskap for god mat og samfunnsengasjement. Som CEO driver hun selskapet fremover med visjon og hjerte.',
     instagram: '#',
   },
   {
-    name: 'Emil Karlsen',
+    name: 'Abdullah Al Tamimi',
     role: 'Head Chef',
-    image: '/team/teamex.png',
-    bio: 'Emil er vårt kjøkkengeni og sørger for at hver burger er perfekt stekt med smør, krydder og kjærlighet.',
+    image: '/team/abdullah-temp.png',
+    bio: 'Abdullah er vårt kjøkkengeni og sørger for at hver burger er perfekt stekt med smør, krydder og kjærlighet.',
     instagram: '#',
   },
   {
-    name: 'Sara Nilsen',
+    name: 'Gine Pedersen',
     role: 'Event-koordinator',
-    image: '/team/teamex.png',
-    bio: 'Sara planlegger og organiserer alle våre pop-up events, fra festival til private sammenkomster, med presisjon og smil.',
+    image: '/team/gine-temp.png',
+    bio: 'Gine planlegger og organiserer alle våre pop-up events, fra festival til private sammenkomster, med presisjon og smil.',
     instagram: '#',
   },
   {
